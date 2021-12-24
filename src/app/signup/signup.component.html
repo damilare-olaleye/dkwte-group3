@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<body style="background-color: darkgray;">
+  <div id="card" style="background-color: black;">
+    <div id="card-content">
+      <div id="card-title">
+        <h2>Sign up for DKWTE</h2>
+        <div class="underline-title"></div>
+      </div>
+      <form class="form">
+
+        <br>
+        <input type="firstname" [(ngModel)]="firstName"  id="firstName" class="form-content" placeholder="First Name" name="firstname" autocomplete="off" required />
+        <div class="form-border"></div>
+        <br>
+        <input type="lastname" [(ngModel)]="lastName" id="last_name" class="form-content" placeholder="Last Name" name="lastname" autocomplete="off" required />
+        <div class="form-border"></div>
+        <br>
+        <input type="email" [(ngModel)]="email" id="email" class="form-content" placeholder="email" name="email" autocomplete="off" required />
+        <div class="form-border"></div>
+        <br>
+        <input id="password" [(ngModel)]="password" class="form-content" placeholder="Password" type="password" name="password" required />
+        <br>
+        <input id="phonenumber" [(ngModel)]="phoneNumber" id="phone_number" class="form-content" placeholder="PhoneNumber" type="phoneNumber" name="phoneNumber" required />
+        <br>
+        <input id="role" [(ngModel)]="role" id="role" class="form-content" placeholder="Member" type="role" name="role" required />
+
+        <div class="form-border"></div>
+       <input id="submit-btn" (click)="onButtonClick()" name="submit" type="submit" value="SIGNUP" />
+
+        <br>
+        <div [ngStyle]="{'color':'green'}" *ngIf="successMessage" id="success-message">{{successMessage}}</div>
+        <div [ngStyle]="{'color':'red'}" *ngIf="errorMessage" id="error-message">{{errorMessage}}</div>
+        <br>
+
+        <a routerLink="/login" id="signup" style="color: lightblue;" routerLinkActive="active">Already a member? Sign In</a>
+      </form>
+    </div>
+  </div>
+
+</body>
+

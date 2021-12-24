@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<body style="background-color: darkgray;">
+  <div id="card" style="background-color: black;">
+    <div id="card-content">
+      <div id="card-title">
+        <h2>Sign in to DKWTE</h2>
+        <div class="underline-title"></div>
+      </div>
+      <form class="form">
+
+        <br>
+        <input type="email" [(ngModel)]="email" id="email" class="form-content" placeholder="Email" name="email" autocomplete="on" required />
+        <div class="form-border"></div>
+        <br>
+        <br>
+        <input id="password" [(ngModel)]="password" class="form-content" placeholder="Password" type="password" name="password" required />
+        <br>
+        <div class="form-border"></div>
+        <a routerLink="#"><legend id="forgot-pass" routerLinkActive="active">Forgot password?</legend></a>
+        <input id="submit-btn" (click)="onButtonClick()" name="submit" type="submit" value="LOGIN" />
+
+        <br>
+        <div *ngIf="errorMessage" id="error-message">{{errorMessage}}</div>
+
+        <a routerLink="/signup" id="signup" style="color: lightblue;" routerLinkActive="active" >Don't have account yet? Signup</a>
+      </form>
+    </div>
+  </div>
+
+</body>

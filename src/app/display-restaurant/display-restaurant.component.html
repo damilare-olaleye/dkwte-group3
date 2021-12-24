@@ -1,0 +1,51 @@
+
+<div *ngIf="showResult">
+  <div class="class="search-result new-restaurant>
+<main>
+  <div *ngIf="loading"><h4 id="loading">loading...</h4>  </div>
+
+  <caption id="Cap1">Results</caption>
+  <div role="region" aria-labelledby="Cap1" tabindex="0">
+  </div>
+
+  <div *ngIf="!loading">
+
+    <table id="result">
+
+      <tr>
+        <th>icon</th>
+        <th>Name</th>
+        <th>Open now</th>
+        <br>
+        <th>Rating</th>
+        <th>Address</th>
+      </tr>
+      <tbody>
+          <tr>
+            <td><img [src]="displayRandRestaurant.icon" /></td>
+            <td>{{displayRandRestaurant.name}}</td>
+            <td>{{displayRandRestaurant.opening_hours.open_now}}</td>
+            <br>
+            <td>{{displayRandRestaurant.rating}}</td>
+            <td>{{displayRandRestaurant.vicinity}}</td>
+         </tr>
+
+      </tbody>
+
+    </table>
+    <div>
+      <div class="sub-main">
+        <button (click)="onAddNewReview()" class="button-one">Add new Review</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button  class="button-one">Display Reviews</button>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+
+  </div>
+</main>
+  </div>
+</div>

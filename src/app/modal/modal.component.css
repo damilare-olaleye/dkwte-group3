@@ -1,0 +1,33 @@
+.star{
+  margin: 0px 0px;
+  color: #a9a5a5;
+  display: inline-block;
+  cursor: pointer;
+  transition: all .3s;
+  transform: scale(1);
+}
+
+.star mat-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.star-gold{
+  color: #FF7300;
+
+}
+
+.star-rating-animation:hover .star-hover {
+  color: #FF7300;
+}
+
+.star-rating-animation .star-hover:hover ~ .star-hover {
+  color: #ddd;
+
+}
+
+.star-rating-animation .star-hover:hover{
+  transform: scale(1.3);
+
+}
+
