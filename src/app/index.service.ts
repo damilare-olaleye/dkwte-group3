@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { lastValueFrom, Observable } from 'rxjs';
+import { Restaurant } from 'src/Restaurant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IndexService {
+  [x: string]: any;
 
   constructor(private http: HttpClient) { }
 
@@ -28,4 +31,24 @@ export class IndexService {
     })
   }
 
+  getRestaurant(restaurantName: string, restaurantAddress: string){
+    return this.http.post(`http://localhost:5050/restaurant`, {
+      "restaurantName": restaurantName,
+      "restaurantAddress": restaurantAddress
+    }, {
+      withCredentials: true,
+      observe: 'response'
+    })
+  }
+
+  addRestaurant(restaurantName: string, restaurantAddress: string){
+    return this.http.post(`http://localhost:5050/restaurant`, {
+      "restaurantName": restaurantName,
+      "restaurantAddress": restaurantAddress
+    }, {
+      withCredentials: true,
+      observe: 'response'
+    }
+    )
+  }
 }
