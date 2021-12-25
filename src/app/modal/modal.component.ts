@@ -1,7 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { User } from 'src/User';
+import { LoginService } from '../login.service';
 import { ModalService } from '../modal.service';
 
 @Component({
@@ -43,10 +46,12 @@ export class ModalComponent implements OnInit {
 
   ]
 
-  constructor(private modalService: ModalService, public dialog: MatDialog, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
+  constructor(private loginService: LoginService, private router: Router, private modalService: ModalService,
+    public dialog: MatDialog, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
 
   ngOnInit(): void {
   }
+
 
   onCloseReview(){
     this.dialogRef.close('Confirm');
@@ -54,29 +59,52 @@ export class ModalComponent implements OnInit {
 
   onCancelReview(){
     this.dialogRef.close('Cancel');
-
   }
 
-  rating!: string;
   review!: string;
-  restaurantId!: string;
+  rating!: string;
+  reviewTitle!: string;
+
 
   onSaveReview(){
 
-    // for (let i = 0; i < this.ratings.length; i++){
+  //   var output = Object.values(this.ratings)
+  //    const showRatings = output[0].id;
 
-    //   console.log(i);
-    //   this.rating = this.ratings[i].id;
-    //   console.log(this.ratings[i].id);
-    // }
+  //   for(let i = 0; i < this.ratings.length; i++){
+  //     const newRating = this.ratings[i].id;
+  // }
 
-      this.selectStar(this.rating);
-      this.modalService.addReviews(this.selectStar(this.rating), this.review, this.restaurantId).subscribe(() => {
-      this.dialogRef.close('Save');
-    })
-  }
+  this.modalService.addReviews(this.rating, this.review, this.reviewTitle).subscribe((res) =>  {
+    console.log(res);
+    if (res.status === 200){
 
-  selectStar(value: any): string {
+      console.log(res);
+      let body = <User> res.body;
+
+      console.log("not found")
+
+      if(body.role === 'Member'){
+        this.router.navigate(['index']);
+      }
+
+      if(body.role === 'Admin'){
+        this.router.navigate(['admin'])
+      }
+
+      else {
+        this.router.navigate([''])
+      }
+    }
+
+  this.dialogRef.close('Save');
+}, (err) => {
+
+})
+
+}
+
+selectRating(value: any): string {
 
     if(this.selectedRating === 0){
       this.ratings.filter((star) => {

@@ -1,0 +1,38 @@
+<app-display-restaurant >
+</app-display-restaurant>
+    <mat-dialog-content>
+
+      <strong>{{data}}</strong>
+
+      <h2>List of restaurant reviews!</h2>
+
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto repellendus iure,
+        recusandae quidem porro excepturi perspiciatis laborum beatae culpa odit ad ipsa, commodi facilis, quisquam debitis aut!
+        Cumque, error consequuntur!</p>
+
+        <h2>All Reviews</h2>
+      <hr>
+    </mat-dialog-content>
+
+        <ng-container *ngFor="let showReviews of displayReview ">
+
+            <div class="review" *ngFor="let showReviews of displayReview ">
+              <h4 class="review__title">{{showReviews.reviewTitle}}</h4>
+              <div class="review__score">
+                <span class="score">{{showReviews.ratings}}</span>
+                <span>&nbsp;/&nbsp;5&nbsp;</span>
+                <span class="score-stars">⭐⭐⭐⭐⭐</span>
+              </div>
+              <div class="review__text">"<i>{{showReviews.review}}</i>" – <small>{{showReviews.author}}</small></div>
+              <div class="review__text">"<i>{{showReviews.submittedDate}}</i>" –</div>
+            </div>
+
+        </ng-container>
+    <mat-dialog-actions>
+      <button style="background-color: #4f2c1d; color: white;" mat-raised-button (click)="onCloseReview()">Close</button>&nbsp;
+
+    </mat-dialog-actions>
+
+
+
+

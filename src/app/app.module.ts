@@ -22,6 +22,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import { ShowReviewsComponent } from './show-reviews/show-reviews.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,8 @@ import {MatIconModule} from '@angular/material/icon';
     AdminComponent,
     FooterComponent,
     DisplayRestaurantComponent,
-    ModalComponent
+    ModalComponent,
+    ShowReviewsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatDialogModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule
     ],
   providers: [],
   bootstrap: [AppComponent]

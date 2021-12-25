@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Options } from 'ngx-google-places-autocomplete/objects/options/options';
+import { lastValueFrom } from 'rxjs';
 import { Restaurant } from 'src/Restaurant';
 import { User } from 'src/User';
 import { IndexService } from '../index.service';
 
-declare var google:any;
 
 @Component({
   selector: 'app-index',
@@ -35,6 +35,8 @@ export class IndexComponent implements OnInit {
 
   loading: boolean = true;
 
+  restaurantName!: string;
+  restaurantAddress!: string;
 
   formattedAddress: string = '';
 
@@ -84,21 +86,34 @@ invokeEvent(place: Object) {
 
     });
   }
-
-  displayRestaurantResult() {
-    navigator.geolocation.getCurrentPosition( loc => {
+    displayRestaurantResult() {
+    navigator.geolocation.getCurrentPosition( async loc => {
       let currerntUserPosition = loc.coords.latitude + " " + loc.coords.longitude
 
       console.log(currerntUserPosition);
-      this.indexService.getRestaurantResult(currerntUserPosition, this.radius).subscribe((res) => {
+     await lastValueFrom (this.indexService.getRestaurantResult(currerntUserPosition, this.radius)).then( async (res) => {
         let responseObj = <{results:Restaurant[]}>res
         const idx = Math.floor(Math.random() * responseObj.results.length); // randomize the responseObj array
-          const newRestaurant = responseObj.results[idx];
+        const newRestaurant = responseObj.results[idx];
 
-          this.displayRandRestaurant = newRestaurant;
+        this.displayRandRestaurant = newRestaurant;
 
+        // second request to get restaurant
+       await lastValueFrom (this.indexService.getRestaurant(newRestaurant.name, newRestaurant.vicinity)).then((res) => {
+
+          if(res.status >= 400){
+
+          // third request to add new restaurant
+        this.indexService.addRestaurant(newRestaurant.name, newRestaurant.vicinity).subscribe((res) => {
+           // console.log(res.body);
+    }, (err) => {
+     this.errorMessage = err.error;
+  })
+          }
+        }, (err) => {
+          this.errorMessage = err.error;
+        })
           this.loading = false;
-
           this.isButtonDisabled = false;
        })
     })
