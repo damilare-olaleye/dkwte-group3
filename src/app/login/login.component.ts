@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit {
         let body = <User> res.body;
 
         if(body.role === 'Member'){
-          this.router.navigate(['index']); // navigates to member route page
+          this.router.navigate(['/index']); // navigates to member route page
         }
 
         if(body.role === 'Admin'){
-          this.router.navigate(['admin']); // navigates to admin route page
+          this.router.navigate(['/admin']); // navigates to admin route page
         }
       }
     },

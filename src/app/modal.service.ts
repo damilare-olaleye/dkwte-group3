@@ -38,6 +38,14 @@ export class ModalService {
 
   }
 
+  deleteReviewByReviewId(reviewId: number) {
+    return this.http.delete(`http://localhost:5050/deletereviews/${reviewId}`, {
+      observe: 'response',
+      responseType: 'text',
+      withCredentials: true
+    })
+  }
+
   restaurantById(restaurantId: number) {
     return this.http.get(`http://localhost:5050/restaruantById/${restaurantId}`, {
       observe: 'response'

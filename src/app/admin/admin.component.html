@@ -1,1 +1,51 @@
-<p>admin works!</p>
+<app-indexnavbar></app-indexnavbar>
+<h2>Welcome Admin!</h2>
+
+<div class="container">
+  <div class="card m-5 p-3">
+    <div class="card-body">
+      <div class="container mt-5">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm">
+        </div>
+
+      <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" >
+       <thead>
+         <tr>
+           <th>Review Id</th>
+           <th>Ratings</th>
+           <th>Review</th>
+           <th>Review Title</th>
+           <th>Submitted Date</th>
+           <th>Restaurant Name</th>
+           <th>Author Id</th>
+
+           <th>Delete spam Review</th>
+
+         </tr>
+       </thead>
+
+       <tbody>
+         <tr *ngFor="let group of allReviews | filter:filterTerm">
+           <td>{{group.reviewId}}</td>
+           <td>{{group.ratings}}</td>
+           <td>{{group.review}}</td>
+           <td>{{group.reviewTitle}}</td>
+           <td>{{group.submittedDate}}</td>
+           <td>{{group.restaurant_name}}</td>
+           <td>{{group.authorId}}</td>
+           <button class="" type="submit"
+           (click)="deleteReviewByReviewId(group.reviewId)">Delete Reviews
+          </button>
+
+         </tr>
+       </tbody>
+     </table>
+    </div>
+
+  </div>
+
+</div>
+
+
+<app-footer></app-footer>

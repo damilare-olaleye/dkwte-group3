@@ -24,6 +24,14 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { ShowReviewsComponent } from './show-reviews/show-reviews.component';
+import {DataTablesModule} from 'angular-datatables';
+import { MatTableModule } from '@angular/material/table'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +59,14 @@ import { ShowReviewsComponent } from './show-reviews/show-reviews.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    DataTablesModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    Ng2SearchPipeModule
+
     ],
   providers: [],
   bootstrap: [AppComponent]

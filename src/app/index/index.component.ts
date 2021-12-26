@@ -78,7 +78,7 @@ invokeEvent(place: Object) {
         }
 
         if(body.role === 'Admin'){
-          this.router.navigate(['Admin']); // navigates to admin route page
+          this.router.navigate(['/admin']); // navigates to admin route page
         }
       }
     },

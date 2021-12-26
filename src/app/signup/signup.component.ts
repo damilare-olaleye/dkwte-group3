@@ -32,11 +32,11 @@ export class SignupComponent implements OnInit {
         let body = <User> res.body;
 
         if(body.role === 'Member'){
-          this.router.navigate(['login']); // navigates to member route page
+          this.router.navigate(['/login']); // navigates to member route page
         }
 
         if(body.role === 'Admin'){
-          this.router.navigate(['Admin']); // navigates to admin route page
+          this.router.navigate(['/admin']); // navigates to admin route page
         }
       }
     },
