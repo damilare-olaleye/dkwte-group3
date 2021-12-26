@@ -4,5 +4,6 @@ export interface DisplayReviews {
   submittedDate: string,
   restaurant: string,
   author: number,
-  reviewTitle: string
+  reviewTitle: string,
+  restaurant_name: string
 }

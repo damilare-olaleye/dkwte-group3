@@ -13,10 +13,9 @@
         <h2>All Reviews</h2>
       <hr>
     </mat-dialog-content>
-
         <ng-container *ngFor="let showReviews of displayReview ">
 
-            <div class="review" *ngFor="let showReviews of displayReview ">
+            <div class="review">
               <h4 class="review__title">{{showReviews.reviewTitle}}</h4>
               <div class="review__score">
                 <span class="score">{{showReviews.ratings}}</span>
@@ -24,7 +23,7 @@
                 <span class="score-stars">⭐⭐⭐⭐⭐</span>
               </div>
               <div class="review__text">"<i>{{showReviews.review}}</i>" – <small>{{showReviews.author}}</small></div>
-              <div class="review__text">"<i>{{showReviews.submittedDate}}</i>" –</div>
+              <div class="review__text">"<i>{{showReviews.submittedDate}}</i>" – {{showReviews.restaurant_name}}</div>
             </div>
 
         </ng-container>

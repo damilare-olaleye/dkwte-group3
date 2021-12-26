@@ -9,11 +9,12 @@ export class ModalService {
   constructor(private http: HttpClient) { }
 
 
-  addReviews(rating: string, review: string, reviewTitle: string){
+  addReviews(rating: string, review: string, reviewTitle: string, restaurant_name: string){
     return this.http.post('http://localhost:5050/newreviews', {
       "rating": rating,
       "review": review,
-      "reviewTitle": reviewTitle
+      "reviewTitle": reviewTitle,
+      "restaurant_name": restaurant_name
      }, {
       withCredentials: true,
       observe: 'response'
@@ -30,7 +31,9 @@ export class ModalService {
 
   displayReviews() {
    return this.http.get(`http://localhost:5050/reviews`, {
-      observe: 'response'
+      observe: 'response',
+      withCredentials: true
+
     })
 
   }

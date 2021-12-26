@@ -64,6 +64,7 @@ export class ModalComponent implements OnInit {
   review!: string;
   rating!: string;
   reviewTitle!: string;
+  restaurantName!: string;
 
 
   onSaveReview(){
@@ -75,7 +76,7 @@ export class ModalComponent implements OnInit {
   //     const newRating = this.ratings[i].id;
   // }
 
-  this.modalService.addReviews(this.rating, this.review, this.reviewTitle).subscribe((res) =>  {
+  this.modalService.addReviews(this.rating, this.review, this.reviewTitle, this.restaurantName).subscribe((res) =>  {
     console.log(res);
     if (res.status === 200){
 

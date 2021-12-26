@@ -1,19 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { Restaurant } from 'src/Restaurant';
 import { IndexService } from '../index.service';
-import { LoginService } from '../login.service';
 import { ModalComponent } from '../modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { User } from 'src/User';
 import { ModalService } from '../modal.service';
 import { DisplayReviews } from 'DisplayRestaurant';
 import { ShowReviewsComponent } from '../show-reviews/show-reviews.component';
-import { lastValueFrom, Observable } from 'rxjs';
-import { NewRestaurant } from 'AddRestaurant';
+import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
+import { User } from 'src/User';
+
 
 @Component({
   selector: 'app-display-restaurant',
@@ -24,7 +21,7 @@ export class DisplayRestaurantComponent implements OnInit {
 
   closeResult = '';
 
-constructor(public dialog: MatDialog, private modalService: ModalService, private httpClient: HttpClient, private indexService: IndexService) { }
+constructor(public dialog: MatDialog, private loginService: LoginService, private router: Router, private modalService: ModalService, private httpClient: HttpClient, private indexService: IndexService) { }
 
 radius!: number;
 errorMessage!: string;
@@ -60,7 +57,6 @@ displayRandRestaurant!: Restaurant;
 
 
   async onAddNewReview() {
-    console.log("here");
     let modalRef = this.dialog.open(ModalComponent, {
       width: '380px',
       height: '350px',
@@ -68,33 +64,30 @@ displayRandRestaurant!: Restaurant;
     });
 
     // dont know what to put here without user inputing the id
-    this.modalService.restaurantById(12).subscribe((res) => {
+    // this.modalService.restaurantById(12).subscribe((res) => {
 
-    this.modalService.restaurantByNameAndAddress(this.restaurantName, this.restaurantAddress).subscribe((res) => {
+    // this.modalService.restaurantByNameAndAddress(this.restaurantName, this.restaurantAddress).subscribe((res) => {
 
-    })
+    // })
 
     modalRef.afterClosed().subscribe(result => {
       this.dialogResult = result;
     });
 
-    })
+    // })
   }
 
   onDisplayReviews() {
     let modalRef = this.dialog.open(ShowReviewsComponent, {
-      width: '3000px',
+      width: '6000px',
       height: '1500px',
       data: 'Reviews from Customers'
 
     });
 
     this.modalService.displayReviews().subscribe((res) => {
-
       let responseObj = <{body:DisplayReviews[]}><unknown>res
       this.displayReview = responseObj.body;
-
-      console.log(this.displayReview);
     })
 
 

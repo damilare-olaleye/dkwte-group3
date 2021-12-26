@@ -1,20 +1,28 @@
 <app-navbar></app-navbar>
-  <main class="container-fluid cover">
+<main class="container-fluid cover">
 
-      <div class="row align-items-center justify-content-center justify-content-xl-start vh-80">
-          <div class="col col-sm-7 text-center text-xl-left col-xl-4 offset-xl-2">
-              <h1 class="mb-4">Generate a random restaurant near you</h1>
-              <p class="mb-5 subtitle-mb">Food, drinks and desserts available for delivery or pickup.</p>
-              <div class="input-group mb-3 shadow">
+  <div class="row align-items-center justify-content-center justify-content-xl-start vh-80">
+      <div class="col col-sm-7 text-center text-xl-left col-xl-4 offset-xl-2">
+          <h1 class="mb-4">Generate a random restaurant near you</h1>
+          <p class="mb-5 subtitle-mb">Food, drinks and desserts available for delivery or pickup.</p>
+          <div class="input-group mb-3 shadow">
 
-                  <input type="text" class="form-control" placeholder="Enter address" aria-label="Search" aria-describedby="basic-addon1">
-                  <input type="text" class="form-control" placeholder="Radius(miles)" aria-label="Search" aria-describedby="basic-addon1">
+              <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" type="text" class="form-control"
+              placeholder="Enter address" aria-label="Search" aria-describedby="basic-addon1">{{formattedAddress}}
 
-                  <div class="input-group-prepend">
-                      <button class="btn bg-orange text-light text-uppercase p-3" type="button">Eat</button>
-                  </div>
+              <input type="text" class="form-control " [(ngModel)]="radius" placeholder="Radius(miles)" aria-label="Search" aria-describedby="basic-addon1">
+
+              <div class="input-group-prepend">
+                  <button class="btn bg-orange text-light text-uppercase p-3"
+                   type="button" (click)="displayResult()" [disabled]="isButtonDisabled">Eat</button>
               </div>
+
           </div>
       </div>
-  </main>
+  </div>
+</main>
+<app-display-restaurant [showResult]="showResults" [loading]="loading" [displayRandRestaurant]="displayRandRestaurant">
 
+</app-display-restaurant>
+
+<app-footer></app-footer>

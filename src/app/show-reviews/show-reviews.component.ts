@@ -2,7 +2,10 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DisplayReviews } from 'DisplayRestaurant';
+import { User } from 'src/User';
+import { IndexService } from '../index.service';
 import { ModalService } from '../modal.service';
 
 @Component({
@@ -12,7 +15,7 @@ import { ModalService } from '../modal.service';
 })
 export class ShowReviewsComponent implements OnInit {
 
-constructor(public dialog: MatDialog, private modalService: ModalService, public dialogRef: MatDialogRef<ShowReviewsComponent>, @Inject(MAT_DIALOG_DATA)public data: string) { }
+constructor(private indexService: IndexService, private router: Router, public dialog: MatDialog, private modalService: ModalService, public dialogRef: MatDialogRef<ShowReviewsComponent>, @Inject(MAT_DIALOG_DATA)public data: string) { }
 
 displayReview: DisplayReviews[] = [];
 
@@ -22,14 +25,13 @@ displayReview: DisplayReviews[] = [];
   restaurant!: string;
   author!: number;
   reviewTitle!: string;
+  restaurant_name!: string;
 
   ngOnInit(): void {
-  this.modalService.displayReviews().subscribe((res) => {
 
+  this.modalService.displayReviews().subscribe((res) => {
     let responseObj = <{body:DisplayReviews[]}><unknown>res
     this.displayReview = responseObj.body;
-
-    console.log(this.displayReview);
   })
 
   }
