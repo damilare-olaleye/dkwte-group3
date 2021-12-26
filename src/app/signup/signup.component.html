@@ -28,8 +28,8 @@
        <input id="submit-btn" (click)="onButtonClick()" name="submit" type="submit" value="SIGNUP" />
 
         <br>
-        <div [ngStyle]="{'color':'green'}" *ngIf="successMessage" id="success-message">{{successMessage}}</div>
-        <div [ngStyle]="{'color':'red'}" *ngIf="errorMessage" id="error-message">{{errorMessage}}</div>
+        <div  class="text-success" *ngIf="successMessage" id="success-message">{{successMessage}}</div>
+        <div  class="text-danger" *ngIf="errorMessage" id="error-message">{{errorMessage}}</div>
         <br>
 
         <a routerLink="/login" id="signup" style="color: lightblue;" routerLinkActive="active">Already a member? Sign In</a>

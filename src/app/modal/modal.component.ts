@@ -66,16 +66,10 @@ export class ModalComponent implements OnInit {
   reviewTitle!: string;
   restaurantName!: string;
 
+  errorMessage!: string;
+
 
   onSaveReview(){
-
-  //   var output = Object.values(this.ratings)
-  //    const showRatings = output[0].id;
-
-  //   for(let i = 0; i < this.ratings.length; i++){
-  //     const newRating = this.ratings[i].id;
-  // }
-
   this.modalService.addReviews(this.rating, this.review, this.reviewTitle, this.restaurantName).subscribe((res) =>  {
     console.log(res);
     if (res.status === 200){
@@ -100,9 +94,8 @@ export class ModalComponent implements OnInit {
 
   this.dialogRef.close('Save');
 }, (err) => {
-
+  this.errorMessage = err.error;
 })
-
 }
 
 selectRating(value: any): string {

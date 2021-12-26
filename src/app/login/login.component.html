@@ -20,7 +20,7 @@
         <input id="submit-btn" (click)="onButtonClick()" name="submit" type="submit" value="LOGIN" />
 
         <br>
-        <div *ngIf="errorMessage" id="error-message">{{errorMessage}}</div>
+        <div *ngIf="errorMessage" id="error-message" class="text-danger">{{errorMessage}}</div>
 
         <a routerLink="/signup" id="signup" style="color: lightblue;" routerLinkActive="active" >Don't have account yet? Signup</a>
       </form>

@@ -10,8 +10,6 @@
       </div>
 
     </mat-dialog-content>
-
-
     <mat-dialog-content>
 
       <strong>{{data}}</strong>
@@ -22,17 +20,20 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput name="review title" ngDefaultControl placeholder="Review Title" [(ngModel)]="reviewTitle">
+      <input matInput name="restaurant name" ngDefaultControl placeholder="Restaurant name" [(ngModel)]="restaurantName">
     </mat-form-field>
 
+
     <mat-form-field>
-      <input matInput name="restaurant name" ngDefaultControl placeholder="Restaurant name" [(ngModel)]="restaurantName">
+      <input matInput name="review title" ngDefaultControl placeholder="Review Title" [(ngModel)]="reviewTitle">
     </mat-form-field>
 
     <mat-form-field>
       <input matInput name="review" ngDefaultControl placeholder="Write review for restaurant" [(ngModel)]="review">
     </mat-form-field>
     <hr>
+    <div *ngIf="errorMessage" id="error-message" class="text-danger">{{errorMessage}}</div>
+<hr>
     <mat-dialog-actions>
       <button style="background-color: #4f2c1d; color: white;" mat-raised-button (click)="onCloseReview()">Close</button>&nbsp;
       <button style="background-color: #4f2c1d; color: white;" mat-raised-button (click)="onSaveReview()">Save</button>&nbsp;

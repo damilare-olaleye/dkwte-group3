@@ -9,7 +9,6 @@ import { DisplayReviews } from 'DisplayRestaurant';
 import { ShowReviewsComponent } from '../show-reviews/show-reviews.component';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
-import { User } from 'src/User';
 
 
 @Component({
