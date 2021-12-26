@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -8,7 +9,9 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      declarations: [ LoginComponent ],
+      providers: [LoginComponent]
     })
     .compileComponents();
   });
@@ -19,7 +22,18 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create ngOnInit', () => {
+    const loginComponent: LoginComponent = TestBed.get(LoginComponent);
+    expect(loginComponent.ngOnInit).toBeTruthy();
+    });
+
+    it('should create onButtonClick', () => {
+      const loginComponent: LoginComponent = TestBed.get(LoginComponent);
+      expect(loginComponent.onButtonClick).toBeTruthy();
+      });
+
+  it('should be created checkedIfLoggedIn', () => {
+    const loginComponent: LoginComponent = TestBed.get(LoginComponent);
+    expect(loginComponent.checkIfLoggedIn).toBeTruthy();
   });
 });

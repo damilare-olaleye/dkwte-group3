@@ -11,7 +11,7 @@ import { IndexService } from '../index.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit  {
 
   constructor(private httpClient: HttpClient, private elementRef: ElementRef, private indexService: IndexService, private router: Router) { }
 

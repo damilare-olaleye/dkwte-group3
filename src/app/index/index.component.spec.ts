@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IndexComponent } from './index.component';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+
 
 describe('IndexComponent', () => {
   let component: IndexComponent;
@@ -8,7 +11,9 @@ describe('IndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IndexComponent ]
+      imports: [HttpClientTestingModule, RouterTestingModule, GooglePlaceModule],
+      declarations: [ IndexComponent ],
+      providers: [IndexComponent]
     })
     .compileComponents();
   });
@@ -22,4 +27,5 @@ describe('IndexComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IndexnavbarComponent } from './indexnavbar.component';
 
 describe('IndexnavbarComponent', () => {
@@ -8,7 +9,10 @@ describe('IndexnavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IndexnavbarComponent ]
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      declarations: [ IndexnavbarComponent ],
+      providers: [IndexnavbarComponent]
+
     })
     .compileComponents();
   });
@@ -22,4 +26,20 @@ describe('IndexnavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create checkedIfLoggedIn', () => {
+    const indexNavBar: IndexnavbarComponent = TestBed.get(IndexnavbarComponent);
+    expect(indexNavBar.checkIfLoggedIn).toBeTruthy();
+   });
+
+   it('should create onLogoutClick', () => {
+    const indexNavBar: IndexnavbarComponent = TestBed.get(IndexnavbarComponent);
+    expect(indexNavBar.onLogoutClick).toBeTruthy();
+   });
+
+   it('should create onLogoutClick', () => {
+    const indexNavBar: IndexnavbarComponent = TestBed.get(IndexnavbarComponent);
+    expect(indexNavBar.ngOnInit).toBeTruthy();
+   });
+
 });
